@@ -74,10 +74,10 @@ fn create_rust_file(day: &str, year: &str) {
     let filename = format!("./{}/src/day{}.rs", year, day);
     let file_content = format!(
         r#"
-fn run1() {{
+pub fn run1() {{
 
 }}
-fn run2() {{
+pub fn run2() {{
 
 }}"#
     );
