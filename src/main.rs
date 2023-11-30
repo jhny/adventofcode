@@ -98,5 +98,6 @@ fn main() {{
         day, day, day
     );
 
-    create_file_with_content(&filename, &file_content);
+    fs::write(&filename, &file_content).expect("Unable to write file");
+    println!("Setup main.rs: {}", filename);
 }
