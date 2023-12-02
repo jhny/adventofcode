@@ -33,17 +33,19 @@
    bag))
 
 (defn fit [game bag]
-  (empty? (remove #(fit-subgame % bag) game))) )
+  (every? #(fit-subgame % bag) game))
 
 ;only 12 red cubes, 13 green cubes, and 14 blue cubes
 (def first-bag {:red 12 :green 13 :blue 14})
 
 (defn part1 [input]
   (let [game (parse-input input)]
-    (apply + (map-indexed (fn [index subgame]
-                            (if (fit subgame first-bag)
-                              (inc index)
-                              0)) game))))
+    (->> game
+         (map-indexed (fn [index subgame]
+                        (if (fit subgame first-bag)
+                          (inc index)
+                          0)))
+         (apply +))))
 
 (comment
 
